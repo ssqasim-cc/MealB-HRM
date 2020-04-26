@@ -1,0 +1,18 @@
+version: '2'
+
+services:    
+    abp_mvc:
+        image: abp/mvc
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Staging
+        ports:
+            - "80:80"
+        networks:
+            mssql_dotcorebr:
+                ipv4_address: 10.10.10.20
+        restart: always
+        volumes:
+            - "./Mvc-Logs:/app/App_Data/Logs"       
+networks:
+    mssql_dotcorebr:
+        external: true
